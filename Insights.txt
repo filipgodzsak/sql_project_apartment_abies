@@ -1,0 +1,23 @@
+SQL Reservation Analytics — Key Insights
+
+Dataset contains 327 reservation records across multiple years; overall data quality is good with only a few anomalies detected (one zero-night stay, two invalid date ranges, one price mismatch, several null commissions normalized to zero).
+
+Booking channels were inconsistent in raw data (e.g., Booking, booking, book, air, airbnb). Channels were normalized using CASE + pattern matching into three analytical groups: booking, airbnb, priamo. This enabled correct aggregation and comparison.
+
+Total revenue is driven primarily by the booking channel (~53% revenue share). Direct bookings contribute ~31% and airbnb ~16%.
+
+Booking has the highest ADR (~91) and highest total and net revenue despite the highest commission rate (~14%). Direct channel has near-zero commission and the strongest margin efficiency but lower ADR.
+
+Average length of stay is slightly above 3 nights and ADR is ~82 overall, indicating stable short-stay booking behavior.
+
+Strong seasonality is present. July is consistently the top revenue month, with the main high season in summer and a smaller secondary peak in winter months.
+
+Year-over-year revenue trend is volatile rather than strictly growing: slight decline in 2022, strong growth in 2023 and 2024, followed by a moderate decline in 2025.
+
+ADR increased up to 2023 and then started to decrease, suggesting pricing or channel-mix changes in later periods.
+
+Guest revenue ranking shows the top individual guests generate around 1k+ revenue each, but revenue is not extremely concentrated overall — about 201 guests account for roughly 80% of total revenue.
+
+Monthly channel ranking varies over time: booking is dominant in most months, but direct bookings lead in some individual months, confirming channel performance shifts.
+
+Window functions (RANK, LAG, running SUM, cumulative share) were successfully used to produce rankings, running totals, YoY change, and Pareto-style concentration metrics.
