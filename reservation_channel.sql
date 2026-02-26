@@ -13,7 +13,7 @@ WITH base AS (
   FROM abies_bookings_all
 )
 
--- 1) KPI podľa portálu (normalized)
+-- 1) KPI by portal (normalized)
 SELECT
   portal_norm,
   COUNT(*) AS rezervacie,
@@ -26,7 +26,7 @@ FROM base
 GROUP BY portal_norm
 ORDER BY trzby DESC;
 
--- 2) Podiel na tržbách (% share) podľa portálu (normalized)
+-- 2) Revenue share (% share) by portal (normalized)
 WITH base AS (
   SELECT
     *,
@@ -48,7 +48,7 @@ FROM base
 GROUP BY portal_norm
 ORDER BY trzby DESC;
 
--- 3) Provízia % podľa portálu (normalized)
+-- 3) Commission % by portal (normalized)
 WITH base AS (
   SELECT
     *,
@@ -71,7 +71,7 @@ FROM base
 GROUP BY portal_norm
 ORDER BY provizia_pct DESC;
 
--- 4) Ranking portálov podľa čistých tržieb (normalized)
+-- 4) Ranking portals by net revenue (normalized)
 WITH base AS (
   SELECT
     *,
@@ -90,3 +90,4 @@ FROM base
 GROUP BY portal_norm
 
 ORDER BY rnk;
+
