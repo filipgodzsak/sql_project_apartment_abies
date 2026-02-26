@@ -1,4 +1,4 @@
--- CTE s normalizáciou (použijeme v každom dopyte)
+-- CTE with normalization (we will use it in every query)
 
 with base as (
   select
@@ -11,7 +11,8 @@ with base as (
   from abies_bookings_all
 )
 
--- Mesačné tržby (trend)
+-- Monthly revenue (trend)
+  
 with base as (
   select
     *,
@@ -33,7 +34,8 @@ from base
 group by 1
 order by 1;
 
---Sezónnosť podľa mesiacov (naprieč rokmi)
+--Seasonality by month (across years)
+
 with base as (
   select
     *,
@@ -55,9 +57,8 @@ group by 1,2
 order by trzby desc;
 
 
--- názvy mesiacov budú podľa locale DB; poradie riešime mesiac_cislo.)
+-- YoY revenues (annual)
 
--- YoY tržby (ročne)
 with base as (
   select
     *,
@@ -79,7 +80,8 @@ from base
 group by 1
 order by 1;
 
--- YoY % (ročne) – pohovorový bonus
+-- YoY % (annual)
+
 with yearly as (
   select
     extract(year from prichod) as rok,
