@@ -1,4 +1,4 @@
---Základné KPI — jeden query blok
+--Basic KPI — 
 select
   count(*) as rezervacie,
   sum(cena) as trzby,
@@ -9,17 +9,18 @@ select
   avg(pocet_noci) as priemer_noci
 from abies_bookings_all;
 
---ADR (bezpečne — ochrana proti deleniu nulou)
+--ADR (safely – division by zero protection)
 select
   sum(cena) / nullif(sum(pocet_noci),0) as adr
 from abies_bookings_all;
 
---Tržby na rezerváciu
+--Revenue per reservation
 select
   sum(cena) / nullif(count(*),0) as trzby_na_rez
 from abies_bookings_all;
 
---Provízia %
+--Commission %
 select
   sum(provizia) / nullif(sum(cena),0) as provizia_pct
 from abies_bookings_all;
+
