@@ -88,4 +88,5 @@ SELECT
   RANK() OVER (ORDER BY SUM(cena - provizia) DESC) AS rnk
 FROM base
 GROUP BY portal_norm
+
 ORDER BY rnk;
